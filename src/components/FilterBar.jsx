@@ -8,7 +8,7 @@ export default function FilterBar({
   totalResultsCount
 }) {
   return (
-    <div className="sticky top-14 z-40 bg-[#0c0c0c]/95 backdrop-blur-xl border-b border-[#222]">
+    <div className="sticky top-16 sm:top-[72px] z-40 bg-[#0c0c0c]/95 backdrop-blur-xl border-b border-[#222]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Categories */}

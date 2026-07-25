@@ -48,7 +48,7 @@ export default function HeroBanner({ searchQuery, onSearch }) {
               <span
                 key={idx}
                 className={`block ${animClass}`}
-                style={{ background: 'linear-gradient(90deg, #f0f0f0 0%, #666 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                style={{ background: 'linear-gradient(180deg, #4ade80 0%, #16a34a 50%, #052e16 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
               >
                 {WORDS[idx]}
               </span>

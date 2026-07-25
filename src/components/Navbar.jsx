@@ -17,17 +17,17 @@ export default function Navbar({ searchQuery, onSearch, onOpenInfoModal }) {
   return (
     <header className="sticky top-0 z-50 site-nav">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center h-14 gap-6">
+        <div className="flex items-center h-16 sm:h-[72px] gap-6">
 
           {/* Brand */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 shrink-0"
+            className="flex items-center gap-2.5 shrink-0"
           >
-            <div className="w-6 h-6 rounded-sm bg-[#f0f0f0] flex items-center justify-center">
-              <span className="text-[#0c0c0c] font-bold text-[10px] tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>SG</span>
+            <div className="w-7 h-7 rounded bg-[#f0f0f0] flex items-center justify-center">
+              <span className="text-[#0c0c0c] font-bold text-[11px] tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>SG</span>
             </div>
-            <span className="text-[#f0f0f0] font-semibold text-sm tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
+            <span className="text-[#f0f0f0] font-semibold text-[15px] tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
               ShoppinGenie
             </span>
           </button>

@@ -35,7 +35,7 @@ export default function CommunityBanner() {
               href="https://t.me/shoppingenie"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-md bg-[#f0f0f0] hover:bg-white text-[#0c0c0c] font-semibold text-[13px] transition-colors"
+              className="btn-telegram justify-center"
             >
               <Send className="w-3.5 h-3.5" />
               Join Telegram
@@ -44,7 +44,7 @@ export default function CommunityBanner() {
               href="https://t.me/shoppingenie"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-md border border-[#2a2a2a] hover:border-[#444] text-[#888] hover:text-[#f0f0f0] font-semibold text-[13px] transition-colors"
+              className="btn-whatsapp justify-center"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               Join WhatsApp
