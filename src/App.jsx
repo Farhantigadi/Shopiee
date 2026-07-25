@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MaintenancePage from './components/MaintenancePage';
 import Navbar from './components/Navbar';
 import HeroBanner from './components/HeroBanner';
 import FilterBar from './components/FilterBar';
@@ -23,6 +24,8 @@ export default function App() {
     setSelectedStore('all');
     setSortBy('newest');
   };
+
+  if (import.meta.env.VITE_MAINTENANCE === 'true') return <MaintenancePage />;
 
   return (
     <div className="min-h-screen bg-[#0d0d12] text-[#888] flex flex-col antialiased">
