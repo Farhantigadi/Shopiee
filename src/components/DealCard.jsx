@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Copy, Check, Star, ShieldCheck, Clock, TrendingDown, Flame } from 'lucide-react';
+import { ExternalLink, Copy, Check, Star, TrendingDown } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function DealCard({ deal }) {
@@ -8,103 +8,82 @@ export default function DealCard({ deal }) {
   const handleCopyLink = () => {
     navigator.clipboard.writeText(deal.affiliateUrl);
     setCopied(true);
-    confetti({ particleCount: 25, spread: 50, origin: { y: 0.8 } });
+    confetti({ particleCount: 20, spread: 45, origin: { y: 0.8 } });
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const savingsAmount = deal.originalPrice - deal.dealPrice;
+  const savings = deal.originalPrice - deal.dealPrice;
 
   return (
-    <div className="glass-card rounded-2xl overflow-hidden flex flex-col group">
+    <div className="card rounded-lg overflow-hidden flex flex-col group">
 
-      {/* Image area — fully clean */}
-      <div className="bg-[#0d1424] flex items-center justify-center p-6 aspect-[4/3]">
+      {/* Image */}
+      <div className="bg-[#111] flex items-center justify-center aspect-[4/3] p-6 border-b border-[#1a1a1a]">
         <img
           src={deal.imageUrl}
           alt={deal.title}
-          className="w-full h-full object-contain max-h-40 group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-contain max-h-36 group-hover:scale-[1.03] transition-transform duration-500"
           loading="lazy"
         />
       </div>
 
-      {/* Card body */}
-      <div className="p-4 flex-1 flex flex-col gap-3">
+      {/* Body */}
+      <div className="p-4 flex flex-col gap-2.5 flex-1">
 
-        {/* Store + discount + verified row */}
-        <div className="flex items-center justify-between text-[11px]">
+        {/* Store · off */}
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-400 uppercase tracking-wide">{deal.storeName}</span>
-            {deal.isLoot ? (
-              <span className="flex items-center gap-0.5 text-rose-400 font-black">
-                <Flame className="w-3 h-3 fill-rose-400" />
-                {deal.discountPercent}% OFF
-              </span>
-            ) : (
-              <span className="text-emerald-400 font-black">{deal.discountPercent}% OFF</span>
-            )}
+            <span className="label">{deal.storeName}</span>
+            <span className="w-px h-2.5 bg-[#222]" />
+            <span className="mono text-[11px] text-[#888]">{deal.discountPercent}% off</span>
           </div>
-          <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-            <ShieldCheck className="w-3 h-3" />
-            Verified
-          </span>
+          <span className="label">Verified</span>
         </div>
 
         {/* Title */}
-        <h3 className="font-semibold text-sm text-slate-100 line-clamp-2 leading-snug group-hover:text-emerald-400 transition-colors">
+        <h3 className="text-[13px] font-medium text-[#ccc] line-clamp-2 leading-snug group-hover:text-[#f0f0f0] transition-colors">
           {deal.title}
         </h3>
 
-        {/* Price row */}
-        <div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-black text-white font-['Outfit']">
-              ₹{deal.dealPrice.toLocaleString()}
-            </span>
-            <span className="text-xs text-slate-600 line-through">
-              ₹{deal.originalPrice.toLocaleString()}
-            </span>
-            <span className="text-xs font-bold text-emerald-400 ml-auto">
-              Save ₹{savingsAmount.toLocaleString()}
-            </span>
-          </div>
-          <div className="flex items-center gap-1 mt-1 text-[11px] text-slate-500">
-            <TrendingDown className="w-3 h-3 text-emerald-500 shrink-0" />
-            30-day low: <span className="text-slate-400 font-semibold ml-0.5">₹{deal.lowestPrice30Days.toLocaleString()}</span>
-          </div>
+        {/* Price */}
+        <div className="flex items-baseline gap-2 mt-0.5">
+          <span className="mono text-[1.25rem] font-medium text-[#f0f0f0]">₹{deal.dealPrice.toLocaleString()}</span>
+          <span className="mono text-xs text-[#333] line-through">₹{deal.originalPrice.toLocaleString()}</span>
+          <span className="mono text-xs text-[#666] ml-auto">−₹{savings.toLocaleString()}</span>
         </div>
 
-        {/* Rating + time */}
-        <div className="flex items-center justify-between text-xs text-slate-500">
-          <div className="flex items-center gap-1">
-            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-            <span className="font-bold text-slate-300">{deal.rating}</span>
-            <span>({deal.reviewsCount.toLocaleString()})</span>
-          </div>
-          <span className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            {deal.timeAgo}
-          </span>
+        {/* 30-day low */}
+        <div className="flex items-center gap-1.5 text-[11px] text-[#333]">
+          <TrendingDown className="w-3 h-3 shrink-0" />
+          30-day low
+          <span className="mono text-[#555]">₹{deal.lowestPrice30Days.toLocaleString()}</span>
         </div>
+
+        {/* Rating */}
+        <div className="flex items-center gap-1 text-[11px] text-[#333]">
+          <Star className="w-3 h-3 fill-[#555] text-[#555]" />
+          <span className="text-[#555]">{deal.rating}</span>
+          <span>({deal.reviewsCount.toLocaleString()})</span>
+          <span className="ml-auto">{deal.timeAgo}</span>
+        </div>
+
+        <div className="border-t border-[#1a1a1a] mt-0.5" />
 
         {/* CTAs */}
-        <div className="flex items-center gap-2 mt-auto pt-1">
+        <div className="flex items-center gap-2">
           <a
             href={deal.affiliateUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] shadow-lg shadow-emerald-500/20"
+            className="btn-primary flex-1 justify-center"
           >
-            Grab Deal <ExternalLink className="w-3.5 h-3.5" />
+            Grab Deal <ExternalLink className="w-3 h-3" />
           </a>
           <button
             onClick={handleCopyLink}
-            className={`p-2.5 rounded-xl border transition-all ${
-              copied
-                ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-400'
-                : 'border-white/8 text-slate-500 hover:text-slate-300 hover:border-white/15'
-            }`}
+            className={`btn-icon ${copied ? 'text-[#f0f0f0] border-[#444]' : ''}`}
           >
-            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
         </div>
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { CATEGORIES, STORES } from '../data/mockDeals';
-import { ArrowUpDown } from 'lucide-react';
 
 export default function FilterBar({
   selectedCategory, onSelectCategory,
@@ -9,26 +8,22 @@ export default function FilterBar({
   totalResultsCount
 }) {
   return (
-    <div className="sticky top-16 sm:top-20 z-40 border-y border-white/5 bg-[#080c14]/90 backdrop-blur-xl py-3">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="sticky top-14 z-40 bg-[#0c0c0c]/95 backdrop-blur-xl border-b border-[#222]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
-
-          {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+        {/* Categories */}
+        <div className="flex items-center justify-between border-b border-[#1a1a1a]">
+          <div className="flex items-center overflow-x-auto no-scrollbar">
             {CATEGORIES.map((cat) => {
               const isActive = selectedCategory === cat.id;
-              const isLoot = cat.id === 'loot';
               return (
                 <button
                   key={cat.id}
                   onClick={() => onSelectCategory(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+                  className={`px-4 py-3 text-[12px] font-medium whitespace-nowrap border-b-2 -mb-px transition-colors ${
                     isActive
-                      ? isLoot
-                        ? 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
-                        : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
-                      : 'text-slate-500 border border-white/5 hover:text-slate-300 hover:border-white/10'
+                      ? 'border-[#f0f0f0] text-[#f0f0f0]'
+                      : 'border-transparent text-[#444] hover:text-[#888]'
                   }`}
                 >
                   {cat.label}
@@ -37,40 +32,36 @@ export default function FilterBar({
             })}
           </div>
 
-          {/* Sort & Count */}
-          <div className="flex items-center justify-between md:justify-end gap-3 border-t md:border-t-0 pt-2 md:pt-0 border-white/5">
-            <span className="text-xs text-slate-500">
-              <strong className="text-emerald-400 font-bold">{totalResultsCount}</strong> Verified Deals
+          <div className="flex items-center gap-4 shrink-0 pl-4">
+            <span className="label hidden sm:block">
+              <span className="mono text-[#888]">{totalResultsCount}</span> deals
             </span>
-            <div className="flex items-center gap-2">
-              <ArrowUpDown className="w-3.5 h-3.5 text-slate-600" />
-              <select
-                value={sortBy}
-                onChange={(e) => onSelectSort(e.target.value)}
-                className="bg-[#0f172a] text-slate-300 border border-white/8 rounded-lg px-2.5 py-1.5 text-xs font-semibold focus:outline-none focus:border-emerald-500"
-              >
-                <option value="newest">Newest First</option>
-                <option value="discount">Highest Discount</option>
-                <option value="price_low">Price: Low to High</option>
-                <option value="rating">Highest Rated</option>
-              </select>
-            </div>
+            <select
+              value={sortBy}
+              onChange={(e) => onSelectSort(e.target.value)}
+              className="bg-transparent text-[#444] text-[12px] border-0 focus:outline-none cursor-pointer hover:text-[#888] py-3"
+            >
+              <option value="newest"    className="bg-[#141414]">Newest</option>
+              <option value="discount"  className="bg-[#141414]">Highest Discount</option>
+              <option value="price_low" className="bg-[#141414]">Price: Low to High</option>
+              <option value="rating"    className="bg-[#141414]">Highest Rated</option>
+            </select>
           </div>
         </div>
 
-        {/* Store Chips */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-          <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest shrink-0 mr-1">Store</span>
+        {/* Stores */}
+        <div className="flex items-center gap-1 py-2 overflow-x-auto no-scrollbar">
+          <span className="label shrink-0 mr-2">Store</span>
           {STORES.map((store) => {
             const isActive = selectedStore === store.id;
             return (
               <button
                 key={store.id}
                 onClick={() => onSelectStore(store.id)}
-                className={`px-3 py-1 rounded-md text-xs font-semibold shrink-0 transition-all ${
+                className={`px-2.5 py-1 rounded text-[11px] font-medium shrink-0 transition-colors ${
                   isActive
-                    ? 'bg-white/10 text-white border border-white/20'
-                    : 'text-slate-500 border border-white/5 hover:text-slate-300 hover:border-white/10'
+                    ? 'bg-[#222] text-[#f0f0f0]'
+                    : 'text-[#444] hover:text-[#888]'
                 }`}
               >
                 {store.name}

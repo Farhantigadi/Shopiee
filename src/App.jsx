@@ -25,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-slate-100 flex flex-col font-['Plus_Jakarta_Sans'] antialiased">
+    <div className="min-h-screen bg-[#0d0d12] text-[#888] flex flex-col antialiased">
       
       {/* Header Navigation */}
       <Navbar

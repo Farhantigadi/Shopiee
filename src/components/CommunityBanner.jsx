@@ -1,60 +1,53 @@
 import React from 'react';
-import { Send, MessageSquare, ShieldCheck, Tag } from 'lucide-react';
+import { Send, MessageSquare } from 'lucide-react';
 
 export default function CommunityBanner() {
   return (
-    <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="relative rounded-2xl overflow-hidden p-8 sm:p-12 glass-card glow-emerald">
+    <section className="border-t border-[#1f1f2e] bg-[#0f0f15]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
 
-        {/* Subtle glow blob */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold mb-4">
-              <Tag className="w-3.5 h-3.5" />
-              Instant Push Notifications
-            </div>
-
-            <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight font-['Outfit']">
-              Join 55,000+ Smart Shoppers on Telegram & WhatsApp
+          <div className="max-w-lg">
+            <p className="label mb-5">Community</p>
+            <h2 className="text-3xl sm:text-[2.75rem] font-bold text-[#f0f0f0] leading-[1.1] tracking-[-0.03em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+              Get alerts before<br />deals sell out.
             </h2>
-
-            <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-              Don't miss flash loot deals that sell out in under 2 minutes. Get instant price drop alerts directly to your phone.
+            <p className="mt-5 text-[14px] text-[#555] leading-relaxed max-w-sm">
+              Flash loot deals sell out in under 2 minutes. Join 55,000+ shoppers getting instant price drop alerts on Telegram and WhatsApp.
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-3 text-xs font-semibold text-slate-400">
-              <span className="flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-lg">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                100% Verified Deals Only
-              </span>
-              <span className="flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-lg">
-                <Tag className="w-3.5 h-3.5 text-amber-400" />
-                Instant Price Drop Alerts
-              </span>
+            <div className="mt-10 pt-8 border-t border-[#1a1a1a] flex items-center gap-10">
+              {[
+                { n: '55K+',   l: 'Members' },
+                { n: '< 2min', l: 'Alert speed' },
+                { n: '10+',    l: 'Platforms' },
+              ].map(({ n, l }) => (
+                <div key={l}>
+                  <div className="mono text-xl font-medium text-[#f0f0f0]">{n}</div>
+                  <div className="label mt-1">{l}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
             <a
               href="https://t.me/shoppingenie"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 transition-all hover:scale-105 shadow-lg shadow-emerald-500/25"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-md bg-[#f0f0f0] hover:bg-white text-[#0c0c0c] font-semibold text-[13px] transition-colors"
             >
-              <Send className="w-4 h-4" />
-              Join Telegram Channel
+              <Send className="w-3.5 h-3.5" />
+              Join Telegram
             </a>
             <a
               href="https://t.me/shoppingenie"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl glass-card text-slate-300 hover:text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-md border border-[#2a2a2a] hover:border-[#444] text-[#888] hover:text-[#f0f0f0] font-semibold text-[13px] transition-colors"
             >
-              <MessageSquare className="w-4 h-4" />
-              Join WhatsApp Group
+              <MessageSquare className="w-3.5 h-3.5" />
+              Join WhatsApp
             </a>
           </div>
 
