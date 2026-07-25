@@ -11,12 +11,12 @@ export const STORES = [
 ];
 
 export const CATEGORIES = [
-  { id: 'all', label: 'All Deals', icon: '⚡' },
-  { id: 'loot', label: 'Loot Deals (50%+ OFF)', icon: '🔥' },
-  { id: 'electronics', label: 'Tech & Electronics', icon: '💻' },
-  { id: 'fashion', label: 'Fashion & Apparel', icon: '👗' },
-  { id: 'home', label: 'Home & Kitchen', icon: '🏠' },
-  { id: 'beauty', label: 'Beauty & Personal Care', icon: '💄' },
+  { id: 'all', label: 'All Deals' },
+  { id: 'loot', label: 'Loot Deals — 50%+ OFF' },
+  { id: 'electronics', label: 'Tech & Electronics' },
+  { id: 'fashion', label: 'Fashion & Apparel' },
+  { id: 'home', label: 'Home & Kitchen' },
+  { id: 'beauty', label: 'Beauty & Personal Care' },
 ];
 
 export const MOCK_DEALS = [

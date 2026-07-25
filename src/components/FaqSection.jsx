@@ -6,45 +6,38 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="py-12 bg-white border-t border-slate-200">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-2">
+    <section className="py-16 border-t border-white/5">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold mb-3">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>ShoppinGenie Knowledge Base</span>
+            Knowledge Base
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 font-['Outfit']">
+          <h2 className="text-2xl sm:text-3xl font-black text-white font-['Outfit']">
             Frequently Asked Questions
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-            Everything you need to know about ShoppinGenie deal alerts & price drops
-          </p>
+          <p className="text-xs text-slate-500 mt-2">Everything you need to know about ShoppinGenie</p>
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {OFFICIAL_FAQS.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div
-                key={idx}
-                className="luxe-card rounded-2xl overflow-hidden border border-slate-200/80 transition-all"
-              >
+              <div key={idx} className={`glass-card rounded-xl overflow-hidden transition-all ${isOpen ? 'border-emerald-500/25' : ''}`}>
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-slate-900 hover:text-emerald-700 transition-colors"
+                  className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 text-sm font-semibold text-slate-200 hover:text-white transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-emerald-700 font-black">Q.</span>
+                    <span className="text-emerald-500 font-black text-xs">Q</span>
                     {faq.q}
                   </span>
-                  <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-700' : 'text-slate-400'}`} />
+                  <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-400' : 'text-slate-600'}`} />
                 </button>
-
                 {isOpen && (
-                  <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 text-xs sm:text-sm text-slate-600 font-medium leading-relaxed border-t border-slate-100 mt-1">
-                    <p className="pt-2">{faq.a}</p>
+                  <div className="px-5 pb-4 pt-0 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-white/5">
+                    <p className="pt-3">{faq.a}</p>
                   </div>
                 )}
               </div>
